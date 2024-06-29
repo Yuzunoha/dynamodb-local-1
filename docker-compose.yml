@@ -11,3 +11,7 @@ services:
 
 volumes:
   dynamodb-local:
+
+networks:
+  default:
+    name: dynamodb-local
