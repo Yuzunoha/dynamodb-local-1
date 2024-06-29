@@ -2,9 +2,12 @@ version: '3'
 services:
   dynamodb-local:
     container_name: dynamodb-local
-    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
-    image: "amazon/dynamodb-local"
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ."
+    image: amazon/dynamodb-local
     ports:
       - "8000:8000"
     volumes:
-      - "./docker/dynamodb:/home/dynamodblocal/data" # ホスト側ボリュームに書き込み権限が必要
+      - dynamodb-local:/home/dynamodblocal
+
+volumes:
+  dynamodb-local:
